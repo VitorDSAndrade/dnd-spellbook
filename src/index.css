@@ -1,0 +1,132 @@
+/* ---------------------------------------------------------
+   Global Reset
+--------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+}
+
+/* ---------------------------------------------------------
+   Background & Body
+--------------------------------------------------------- */
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background-color: #0b0b10;
+  color: #f8f9fa;
+}
+
+.d-flex.min-vh-100 {
+  background: radial-gradient(circle at top, #27273a 0, #0b0b10 45%);
+}
+
+/* ---------------------------------------------------------
+   Navbar & Footer
+--------------------------------------------------------- */
+.navbar,
+footer {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+}
+
+/* ---------------------------------------------------------
+   Cards (Spell Cards)
+--------------------------------------------------------- */
+.card {
+  background: #181822;
+  border-radius: 0.75rem;
+  border: 1px solid #9b2226;
+  transition: all 0.15s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 12px rgba(155, 34, 38, 0.8);
+}
+
+/* Spell title styling */
+.card-title {
+  color: #ffffff !important;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-shadow: 0 0 6px rgba(255, 70, 70, 0.55);
+}
+
+/* ---------------------------------------------------------
+   Detail Page List Groups
+--------------------------------------------------------- */
+.list-group-item {
+  background: #181822;
+  color: #f8f9fa;
+  border-color: #343a40;
+}
+
+/* ---------------------------------------------------------
+   Buttons
+--------------------------------------------------------- */
+.btn-primary,
+.btn-outline-primary {
+  border-radius: 999px;
+}
+
+/* Arcane red buttons */
+.btn-outline-primary {
+  border-color: #e63946;
+  color: #e63946;
+}
+
+.btn-outline-primary:hover {
+  background-color: #e63946;
+  color: #fff;
+}
+
+.btn-secondary {
+  background-color: #343a40;
+  border-color: #343a40;
+}
+
+/* ---------------------------------------------------------
+   Inputs
+--------------------------------------------------------- */
+.form-control {
+  background-color: #101018;
+  border-color: #343a40;
+  color: #f8f9fa;
+}
+
+.form-control::placeholder {
+  color: #6c757d;
+}
+
+.form-control:focus {
+  background-color: #101018;
+  border-color: #e63946;
+  box-shadow: 0 0 0 0.2rem rgba(230, 57, 70, 0.25);
+  color: #f8f9fa;
+}
+
+/* ---------------------------------------------------------
+   Links
+--------------------------------------------------------- */
+a {
+  color: #ffb703;
+}
+
+a:hover {
+  color: #ffd166;
+}
+
+/* ---------------------------------------------------------
+   Headings
+--------------------------------------------------------- */
+h1,
+h2,
+h3,
+h4,
+h5 {
+  letter-spacing: 0.03em;
+}
+
+/* h5 (Spell detail section headers) */
+h5 {
+  color: #f4a261;
+}
