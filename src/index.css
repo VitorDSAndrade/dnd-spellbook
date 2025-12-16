@@ -1,132 +1,223 @@
-/* ---------------------------------------------------------
-   Global Reset
---------------------------------------------------------- */
-* {
-  box-sizing: border-box;
+/* =========================================================
+   D&D Old Tome Theme (Bootstrap layout, Tome skin)
+   Goal: keep Bootstrap for structure, but unify parchment look
+========================================================= */
+
+:root {
+  --ink: #2b1b0e;
+  --ink-soft: rgba(43, 27, 14, 0.65);
+
+  --paper: #f3e6c8;
+  --paper-2: #ead9b2;
+
+  --leather-1: #2a1a10;
+  --leather-2: #1a110b;
+
+  --wax: #7a1f1f;
+  --gold: #b58b2a;
+
+  --shadow: rgba(0, 0, 0, 0.22);
+  --shadow-strong: rgba(0, 0, 0, 0.45);
+
+  --gold-border: rgba(181, 139, 42, 0.45);
+  --gold-border-soft: rgba(181, 139, 42, 0.30);
 }
 
-/* ---------------------------------------------------------
-   Background & Body
---------------------------------------------------------- */
+/* ------------------------------
+   Base background (tavern light)
+------------------------------ */
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
-  background-color: #0b0b10;
-  color: #f8f9fa;
+  color: var(--ink);
+  font-family: ui-serif, Georgia, "Times New Roman", serif;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(181, 139, 42, 0.12), transparent 42%),
+    radial-gradient(circle at 80% 0%, rgba(122, 31, 31, 0.10), transparent 48%),
+    radial-gradient(circle at 50% 95%, rgba(0, 0, 0, 0.28), transparent 45%),
+    linear-gradient(180deg, #140f0a 0%, #0c0a08 100%);
 }
 
-.d-flex.min-vh-100 {
-  background: radial-gradient(circle at top, #27273a 0, #0b0b10 45%);
+/* ------------------------------
+   Main parchment panel
+   (Bootstrap adds my-4 p-4 shadow-lg in App.jsx)
+------------------------------ */
+main.container {
+  background: linear-gradient(
+    180deg,
+    rgba(243, 230, 200, 0.98),
+    rgba(234, 217, 178, 0.98)
+  );
+  border: 1px solid var(--gold-border-soft);
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
 }
 
-/* ---------------------------------------------------------
-   Navbar & Footer
---------------------------------------------------------- */
+/* subtle paper grain */
+main.container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(0, 0, 0, 0.06), transparent 35%),
+    radial-gradient(circle at 80% 10%, rgba(0, 0, 0, 0.04), transparent 40%),
+    radial-gradient(circle at 30% 80%, rgba(0, 0, 0, 0.05), transparent 35%);
+  opacity: 0.30;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+/* ------------------------------
+   Navbar + Footer (leather strap)
+------------------------------ */
 .navbar,
 footer {
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+  background: linear-gradient(180deg, var(--leather-1), var(--leather-2)) !important;
+  border-color: var(--gold-border-soft) !important;
+  box-shadow: 0 10px 35px var(--shadow-strong);
 }
 
-/* ---------------------------------------------------------
-   Cards (Spell Cards)
---------------------------------------------------------- */
-.card {
-  background: #181822;
-  border-radius: 0.75rem;
-  border: 1px solid #9b2226;
-  transition: all 0.15s ease-in-out;
+.navbar .navbar-brand {
+  color: rgba(245, 230, 199, 0.95) !important;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 12px rgba(181, 139, 42, 0.25);
 }
 
-.card:hover {
+.navbar .nav-link {
+  color: rgba(245, 230, 199, 0.88) !important;
+}
+
+.navbar .nav-link.active {
+  color: #fff !important;
+  text-shadow: 0 0 12px rgba(181, 139, 42, 0.35);
+}
+
+/* ------------------------------
+   Tome helpers (titles + divider)
+------------------------------ */
+.tome-title {
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
+  border-bottom: 2px solid rgba(181, 139, 42, 0.35);
+  padding-bottom: 8px;
+}
+
+.tome-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(181, 139, 42, 0.55),
+    transparent
+  );
+  border: 0;
+  margin: 0.75rem 0;
+}
+
+/* ------------------------------
+   Unify all cards to parchment
+   (this is what removes the “white modern” look)
+------------------------------ */
+
+/* Any Bootstrap card inside main becomes parchment */
+main.container .card {
+  background: linear-gradient(
+    180deg,
+    rgba(243, 230, 200, 0.98),
+    rgba(234, 217, 178, 0.98)
+  ) !important;
+  border: 1px solid var(--gold-border-soft) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18) !important;
+}
+
+/* Hover only for spell cards (tome-card) */
+.tome-card {
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.tome-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 12px rgba(155, 34, 38, 0.8);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.22) !important;
 }
 
-/* Spell title styling */
+/* Toolbar panel slightly stronger border */
+.tome-panel {
+  border: 1px solid var(--gold-border) !important;
+}
+
+/* Card internals */
+.card,
+.card .card-body,
+.card .card-header {
+  color: var(--ink) !important;
+}
+
 .card-title {
-  color: #ffffff !important;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  text-shadow: 0 0 6px rgba(255, 70, 70, 0.55);
+  font-weight: 800;
 }
 
-/* ---------------------------------------------------------
-   Detail Page List Groups
---------------------------------------------------------- */
+/* “Chapter label” headers */
+.card-header {
+  background: rgba(0, 0, 0, 0.04) !important;
+  border-bottom: 1px solid rgba(181, 139, 42, 0.25) !important;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+/* ------------------------------
+   List-group (detail page)
+------------------------------ */
 .list-group-item {
-  background: #181822;
-  color: #f8f9fa;
-  border-color: #343a40;
+  background: rgba(243, 230, 200, 0.98) !important;
+  color: var(--ink) !important;
+  border-color: rgba(181, 139, 42, 0.25) !important;
 }
 
-/* ---------------------------------------------------------
-   Buttons
---------------------------------------------------------- */
-.btn-primary,
-.btn-outline-primary {
-  border-radius: 999px;
-}
-
-/* Arcane red buttons */
-.btn-outline-primary {
-  border-color: #e63946;
-  color: #e63946;
-}
-
-.btn-outline-primary:hover {
-  background-color: #e63946;
-  color: #fff;
-}
-
-.btn-secondary {
-  background-color: #343a40;
-  border-color: #343a40;
-}
-
-/* ---------------------------------------------------------
-   Inputs
---------------------------------------------------------- */
-.form-control {
-  background-color: #101018;
-  border-color: #343a40;
-  color: #f8f9fa;
+/* ------------------------------
+   Forms: less “modern pill”, more “tome inset”
+------------------------------ */
+.form-control,
+.form-select {
+  background: rgba(243, 230, 200, 0.98) !important;
+  color: var(--ink) !important;
+  border-color: rgba(181, 139, 42, 0.35) !important;
+  border-radius: 12px !important;
 }
 
 .form-control::placeholder {
-  color: #6c757d;
+  color: var(--ink-soft);
 }
 
-.form-control:focus {
-  background-color: #101018;
-  border-color: #e63946;
-  box-shadow: 0 0 0 0.2rem rgba(230, 57, 70, 0.25);
-  color: #f8f9fa;
+.form-control:focus,
+.form-select:focus {
+  border-color: rgba(122, 31, 31, 0.55) !important;
+  box-shadow: 0 0 0 0.2rem rgba(122, 31, 31, 0.16) !important;
 }
 
-/* ---------------------------------------------------------
-   Links
---------------------------------------------------------- */
+/* ------------------------------
+   Buttons: wax seal accent
+------------------------------ */
+.btn-primary {
+  background: var(--wax) !important;
+  border-color: var(--wax) !important;
+}
+
+.btn-outline-primary {
+  color: var(--wax) !important;
+  border-color: rgba(122, 31, 31, 0.70) !important;
+}
+
+.btn-outline-primary:hover {
+  background: var(--wax) !important;
+  color: var(--paper) !important;
+}
+
+/* Links */
 a {
-  color: #ffb703;
+  color: rgba(122, 31, 31, 0.92);
 }
-
 a:hover {
-  color: #ffd166;
-}
-
-/* ---------------------------------------------------------
-   Headings
---------------------------------------------------------- */
-h1,
-h2,
-h3,
-h4,
-h5 {
-  letter-spacing: 0.03em;
-}
-
-/* h5 (Spell detail section headers) */
-h5 {
-  color: #f4a261;
+  color: rgba(181, 139, 42, 0.95);
 }
