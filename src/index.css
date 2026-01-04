@@ -221,3 +221,49 @@ a {
 a:hover {
   color: rgba(181, 139, 42, 0.95);
 }
+
+/* ================================
+   Tome Accordion Style
+================================= */
+.accordion-item {
+  background: transparent !important;
+  border: 0 !important;
+}
+
+.accordion-button {
+  background: linear-gradient(180deg, rgba(243, 230, 200, 0.98), rgba(234, 217, 178, 0.98)) !important;
+  color: var(--ink) !important;
+  border: 1px solid rgba(181, 139, 42, 0.35) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.14);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.accordion-button:not(.collapsed) {
+  border-color: rgba(122, 31, 31, 0.45) !important;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.18);
+}
+
+.accordion-button:focus {
+  box-shadow: 0 0 0 0.2rem rgba(122, 31, 31, 0.15) !important;
+}
+
+.accordion-button::after {
+  filter: sepia(1) saturate(4) hue-rotate(10deg) brightness(0.85);
+  opacity: 0.9;
+}
+
+.accordion-body {
+  background: linear-gradient(180deg, rgba(243, 230, 200, 0.98), rgba(234, 217, 178, 0.98)) !important;
+  color: var(--ink) !important;
+  border: 1px solid rgba(181, 139, 42, 0.25);
+  border-top: 0;
+  border-radius: 0 0 14px 14px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.12);
+}
+
+/* small spacing between entries (looks like “chapters”) */
+.accordion .accordion-item + .accordion-item {
+  margin-top: 10px;
+}
