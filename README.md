@@ -1,7 +1,9 @@
+
 # 🧙‍♂️ D&D 5e Spellbook
 
 <div align="center">
 
+![D&D Spellbook Banner](https://img.shields.io/badge/D%26D-5e%20Spellbook-8B0000?style=for-the-badge&logo=dungeonsanddragons&logoColor=white)
 [![Live Demo](https://img.shields.io/badge/Live-Demo-success?style=for-the-badge)](https://dnd-spellbook-two.vercel.app)
 [![React](https://img.shields.io/badge/React-18+-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://reactjs.org/)
 [![Vite](https://img.shields.io/badge/Vite-Latest-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
